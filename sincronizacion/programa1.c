@@ -31,7 +31,7 @@ int main() {
 
   int sem;
 
-  /* Creación del semaforo controlador de procesos,
+  /* Creacion del semaforo controlador de procesos,
    * solo se aceptaran 4 procesos a la vez en el monitor
    */
   if ((sem  = semget(SEM_ID, 1, IPC_CREAT | 0644)) < 0) {
@@ -39,17 +39,17 @@ int main() {
     return(-1);
   }
 
-  /** Inicialización del semaforo **/
+  /** Inicializacion del semaforo **/
   semctl(sem, 0, SETVAL, 4);
 
-  /** Creación del segmento de memoria compartida **/
+  /** Creacion del segmento de memoria compartida **/
   if((shmem = shmget(id_shmem, sizeof(shmem_data), IPC_CREAT | 0666)) < 0)
   {
 		perror("\tshmget");
 		exit(EXIT_FAILURE);
   }
 
-  /** Vinculación al segmento **/
+  /** Vinculacion al segmento **/
 	if ((pto_shmem = shmat(shmem, NULL, 0)) == (char *) -1)
 	{
 		perror("\tshmat");
